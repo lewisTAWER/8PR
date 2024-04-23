@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _8PR.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,27 @@ namespace _8PR
     /// </summary>
     public partial class MainWindow : Window
     {
+        public WarriorLite WarriorLite = new WarriorLite(100);
+        public WarriorHeight WarriorHeght = new WarriorHeight(100);
+
         public MainWindow()
         {
             InitializeComponent();
+
+            personLiteHP.Content = "Жизненные показатели: " + WarriorLite.HP;
+            personHeightHP.Content = "Жизненные показатели: " + WarriorHeght.HP;
+        }
+
+        private void AttackLite(object sender, MouseButtonEventArgs e)
+        {
+            WarriorLite.ShootDamage(50);
+            personLiteHP.Content = "Жизненные показатели: " + WarriorLite.HP;
+        }
+
+        private void AttackHeight(object sender, MouseButtonEventArgs e)
+        {
+            WarriorHeght.ShootDamage(50);
+            personHeightHP.Content = "Жизненные показатели: " + WarriorHeght.HP;
         }
     }
 }
